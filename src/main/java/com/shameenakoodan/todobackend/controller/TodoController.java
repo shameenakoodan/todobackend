@@ -20,6 +20,7 @@ public class TodoController {
 
     @PostMapping("/addtodo")
     public void saveTodo(@RequestBody  Todo todo){
+        System.out.println(todo.getIsActive());
         todoRepository.save(todo);
     }
 }
