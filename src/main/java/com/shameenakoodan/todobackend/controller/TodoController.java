@@ -40,4 +40,16 @@ public class TodoController {
 
         return ResponseEntity.ok().build();
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteTodo(@PathVariable Long id) {
+        Optional<Todo> todoOptional = todoRepository.findById(id);
+
+        if (!todoOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        todoRepository.deleteById(id);
+
+        return ResponseEntity.ok().build();
+    }
 }
